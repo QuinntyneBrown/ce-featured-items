@@ -1,8 +1,11 @@
 :host {
     display:block;
-    contain:content;
 }
 
 h2 {
     text-align:center;
+    marigin: 0px 0px 30px 0px;
+    font-size:1.625em;
+    line-height:1.4em;
+    font-weight:500;
 }
