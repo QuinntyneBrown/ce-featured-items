@@ -16,7 +16,9 @@ export class FeaturedItemsComponent extends HTMLElement {
     static get observedAttributes () {
         return [
             "featured-items",
-            "featured-items-title"
+            "featured-items-title",
+            "featured-items-link-caption",
+            "featured-items-link-url"
         ];
     }
 
@@ -42,6 +44,8 @@ export class FeaturedItemsComponent extends HTMLElement {
         this.title$.subscribe(x => this.titleHTMLElement.innerText = x);
 
         this.linkCaption$.subscribe(x => this.linkHTMLElement.innerText = x);
+
+        this.linkUrl$.subscribe(x => this.linkHTMLElement.href = x);
     }
 
     private _setEventListeners() {
@@ -61,6 +65,14 @@ export class FeaturedItemsComponent extends HTMLElement {
             case "featured-items-title":
                 this.title$.next(newValue);
                 break;
+
+            case "featured-items-link-caption":
+                this.linkCaption$.next(newValue);
+                break;
+
+            case "featured-items-link-url":
+                this.linkUrl$.next(newValue);
+                break;
         }
     }
 
@@ -68,11 +80,13 @@ export class FeaturedItemsComponent extends HTMLElement {
 
     public linkCaption$: BehaviorSubject<string> = new BehaviorSubject("");
 
+    public linkUrl$: BehaviorSubject<string> = new BehaviorSubject("");
+
     public featuredItems$: BehaviorSubject<Array<any>> = new BehaviorSubject([]);
 
     public get titleHTMLElement(): HTMLElement { return this.shadowRoot.querySelector("h2"); }
 
-    public get linkHTMLElement(): HTMLElement { return this.shadowRoot.querySelector("a"); }
+    public get linkHTMLElement(): HTMLAnchorElement { return this.shadowRoot.querySelector("a"); }
 
     public get gridHTMLElement(): HTMLElement { return this.shadowRoot.querySelector("ce-featured-items-grid") as HTMLElement; }
 }
