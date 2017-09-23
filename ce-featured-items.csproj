@@ -77,6 +77,8 @@
     <Content Include="src\featured-items.component.html" />
     <Content Include="src\featured-items-grid.component.css" />
     <Content Include="src\featured-items-grid.component.html" />
+    <Content Include="src\featured-items-grid-item.component.css" />
+    <Content Include="src\featured-items-grid-item.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
@@ -86,7 +88,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
-    <Folder Include="src\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -130,6 +131,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="src\featured-items.component.ts" />
     <TypeScriptCompile Include="src\featured-items-grid.component.ts" />
+    <TypeScriptCompile Include="src\featured-items-grid-item.component.ts" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>

@@ -20,11 +20,29 @@
             padding: 0;
         }
 
+        ce-featured-items-grid-item {
+            width:477.5px;
+            height:201.5px;
+            margin: 30px;
+        }
     </style>
+
 </head>
 <body>
  
-    <ce-featured-items></ce-featured-items>
+    <ce-featured-items-grid-item></ce-featured-items-grid-item>
+
+    <script>
+        const featuredItem = {
+            "title": "One-of-a-kind gift ideas",
+            "category": "Editor's Picks",
+            "imageUrl": "https://img0.etsystatic.com/191/0/11266858/il_340x270.1284104420_8hrm.jpg"
+        }
+
+        document.body.querySelector("ce-featured-items-grid-item").setAttribute("featured-item", JSON.stringify(featuredItem));
+
+
+    </script>
     <script src="dist/ce-featured-items.js?v=1"></script>    
 </body>
 </html>
