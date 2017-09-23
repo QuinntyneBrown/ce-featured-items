@@ -1,3 +1,6 @@
+import { BehaviorSubject } from "rxjs/BehaviorSubject";
+import { FeaturedItem } from "./featured-items-grid-item.component";
+
 const template = document.createElement("template");
 
 const html = require("./featured-items-grid.component.html");
@@ -9,7 +12,9 @@ export class FeaturedItemsGridComponent extends HTMLElement {
     }
 
     static get observedAttributes () {
-        return [];
+        return [
+            "featured-items"
+        ];
     }
 
     async connectedCallback() {
@@ -27,8 +32,19 @@ export class FeaturedItemsGridComponent extends HTMLElement {
     }
 
     private async _bind() {
+        this.featuredItems$.subscribe(x => {
+            
+            x.map((i) => {                                
+                const el = document.createElement("ce-featured-items-grid-item");
+                el.setAttribute("featured-item", JSON.stringify(i));
+                this.shadowRoot.appendChild(el);
+            });
+        });
 
     }
+
+    public featuredItems$: BehaviorSubject<Array<FeaturedItem>> = new BehaviorSubject([]);
+
 
     private _setEventListeners() {
 
@@ -40,7 +56,8 @@ export class FeaturedItemsGridComponent extends HTMLElement {
 
     attributeChangedCallback (name, oldValue, newValue) {
         switch (name) {
-            default:
+            case "featured-items":
+                this.featuredItems$.next(JSON.parse(newValue));
                 break;
         }
     }

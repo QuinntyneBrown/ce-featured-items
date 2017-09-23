@@ -20,7 +20,7 @@
             padding: 0;
         }
 
-        ce-featured-items-grid-item {
+        ce-featured-items-grid-item.single {
             width:477.5px;
             height:201.5px;
             margin: 30px;
@@ -30,7 +30,8 @@
 </head>
 <body>
  
-    <ce-featured-items-grid-item></ce-featured-items-grid-item>
+    <ce-featured-items featured-items-title="Browse our latest collections"></ce-featured-items>
+    
 
     <script>
         const featuredItem = {
@@ -39,7 +40,10 @@
             "imageUrl": "https://img0.etsystatic.com/191/0/11266858/il_340x270.1284104420_8hrm.jpg"
         }
 
-        document.body.querySelector("ce-featured-items-grid-item").setAttribute("featured-item", JSON.stringify(featuredItem));
+        const featuredItems = [featuredItem, featuredItem];
+
+        const els = Array.from(document.body.querySelectorAll("ce-featured-items"));
+        els.map((x) => x.setAttribute("featured-items", JSON.stringify(featuredItems)));
 
 
     </script>

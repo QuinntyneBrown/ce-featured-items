@@ -57,7 +57,7 @@ export class FeaturedItemsGridItemComponent extends HTMLElement {
 
     attributeChangedCallback (name, oldValue, newValue) {
         switch (name) {
-            case "featured-item":                
+            case "featured-item":                                
                 this.featuredItem$.next(JSON.parse(newValue));
                 break;
         }

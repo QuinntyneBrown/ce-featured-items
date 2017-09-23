@@ -15,7 +15,8 @@ export class FeaturedItemsComponent extends HTMLElement {
 
     static get observedAttributes () {
         return [
-            "featured-items"
+            "featured-items",
+            "featured-items-title"
         ];
     }
 
@@ -34,7 +35,9 @@ export class FeaturedItemsComponent extends HTMLElement {
     }
 
     private async _bind() {
-        this.featuredItems$.subscribe(x => this.gridHTMLElement.setAttribute("featured-items",JSON.stringify(x)));
+        this.featuredItems$.subscribe(x => {            
+            this.gridHTMLElement.setAttribute("featured-items", JSON.stringify(x));
+        });
         
         this.title$.subscribe(x => this.titleHTMLElement.innerText = x);
 
@@ -51,7 +54,7 @@ export class FeaturedItemsComponent extends HTMLElement {
 
     attributeChangedCallback (name, oldValue, newValue) {
         switch (name) {
-            case "featured-items":
+            case "featured-items":                
                 this.featuredItems$.next(JSON.parse(newValue));
                 break;
 
